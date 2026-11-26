@@ -1,0 +1,1 @@
+# amqdle-button-hider
