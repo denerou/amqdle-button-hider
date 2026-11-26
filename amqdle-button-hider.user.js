@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         AMQdle Button Hider 
+// @name         AMQdle Button Hider
 // @version      1.0
 // @description  Moves AMQdle button into game selector
 // @match        https://animemusicquiz.com/*
@@ -13,7 +13,7 @@
   'use strict';
 
   const AMQDLE_ICON =
-    '';
+    'https://animemusicquiz.com/cdn/v1/ui/game-categories/250px/solo.webp';
 
   function setup() {
     const modalBody = document.querySelector('#gameModeSelector .modal-body');
@@ -76,17 +76,18 @@
 
   function watchAndSetup() {
     if (setup()) return;
+
     const obs = new MutationObserver(() => {
       if (setup()) obs.disconnect();
     });
     obs.observe(document.body, { childList: true, subtree: true });
+
     setTimeout(() => obs.disconnect(), 60_000);
   }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', watchAndSetup);
   } else {
-    watchAndSetu
-p();
+    watchAndSetup();
   }
 })();
